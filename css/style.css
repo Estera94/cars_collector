@@ -94,7 +94,7 @@ input:hover, select:hover {
     text-decoration: none;
     cursor: pointer;
     color: white;
-    background-color: #e72424;
+    background-color: #d79f78;
     padding: 12px;
     box-shadow: 13px 9px 15px -1px #3f3e3e52;
     border-radius: 8px;
@@ -115,7 +115,9 @@ input:hover, select:hover {
     box-shadow: 13px 9px 15px -1px #3f3e3e52;
     border-radius: 8px;
     padding: 15px;
-    background-color: white;
+    background-color:#FFFFFFFF;
+    width: 250px;
+    margin: 20px;
 }
 
 span {
