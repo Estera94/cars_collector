@@ -10,7 +10,9 @@ function connectToDB()
 function getCarsDb(): array
 {
     $db = connectToDB();
-    $query = $db->prepare('SELECT `make`,`model`,`fuel`,`gearbox`,`year` FROM `cars` JOIN `fuel` on `cars` . `fuel_type` = `fuel` . `id`');
+    $query = $db->prepare('SELECT `make`,`model`,`fuel`,`gearbox`,`year` 
+                                 FROM `cars`
+                                 JOIN `fuel` on `cars` . `fuel_type` = `fuel` . `id`');
     $query->execute();
     $cars = $query->fetchAll();
     return $cars;
