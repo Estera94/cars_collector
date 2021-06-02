@@ -61,9 +61,9 @@ if(isset($_POST['submit']))
         $year = $_POST['year'];
     }
 
-    if(array_filter($errors))
+    if(!empty($errors['make']) ||!empty($errors['model'] || !empty($errors['fuel']) || !empty($errors['gearbox']) || !empty($errors['year'])))
     {
-//        echo 'There are errors in the form!';
+        echo 'There are errors in the form!';
     } else {
         $make = $_POST['make'];
         $model= $_POST['model'];
@@ -79,11 +79,11 @@ if(isset($_POST['submit']))
         //put this data into the insert query
         $gearbox= $_POST['gearbox'];
         $year= $_POST['year'];
-        $query = $db->prepare('INSERT INTO `cars`(`make`, `model`, `fuel`, `gearbox`, `year`)
-                                     VALUES (?, ?, ?, ?, ?');
-        $result = $query->execute([$make], [$model], [$fuelDb[0]['id']], [$gearbox], [$year] );
-
+        $query = $db->prepare('INSERT INTO `cars`(`make`, `model`, `fuel_type`, `gearbox`, `year`)
+                                     VALUES (?, ?, ?, ?, ?)');
+        $result = $query->execute([$make, $model, $fuelDb[0]['id'], $gearbox, $year]);
         header('Location: carsCollection.php');
+        exit;
     }
 }
 ?>
