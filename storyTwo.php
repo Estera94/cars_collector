@@ -61,7 +61,7 @@ if(isset($_POST['submit']))
 
     if(!empty($errors['make']) ||!empty($errors['model'] || !empty($errors['fuel']) || !empty($errors['gearbox']) || !empty($errors['year'])))
     {
-        echo 'There are errors in the form!';
+//        echo 'There are errors in the form!';
     } else {
         $make = $_POST['make'];
 
@@ -87,6 +87,7 @@ if(isset($_POST['submit']))
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -135,4 +136,6 @@ if(isset($_POST['submit']))
 </section>
 </body>
 </html>
+
+
 
