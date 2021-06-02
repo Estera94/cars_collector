@@ -11,8 +11,6 @@ $errors = ['make'=>'',
     'year'=>''
 ];
 
-//This runs only after the submit button has been submitted
-
 if(isset($_POST['submit']))
 {
     if(empty($_POST['make']))
@@ -66,7 +64,9 @@ if(isset($_POST['submit']))
         echo 'There are errors in the form!';
     } else {
         $make = $_POST['make'];
+
         $model= $_POST['model'];
+
         $fuel = $_POST['fuel'];
 
         $query = $db->prepare('SELECT `id` FROM `fuel` WHERE `fuel` = ?');
@@ -75,10 +75,10 @@ if(isset($_POST['submit']))
 
         $fuelDb = $query->fetchAll();
 
-        //make a variabvle to store  the data
-        //put this data into the insert query
         $gearbox= $_POST['gearbox'];
+
         $year= $_POST['year'];
+
         $query = $db->prepare('INSERT INTO `cars`(`make`, `model`, `fuel_type`, `gearbox`, `year`)
                                      VALUES (?, ?, ?, ?, ?)');
         $result = $query->execute([$make, $model, $fuelDb[0]['id'], $gearbox, $year]);
@@ -87,7 +87,6 @@ if(isset($_POST['submit']))
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -137,31 +136,3 @@ if(isset($_POST['submit']))
 </body>
 </html>
 
-
-
-<?php
-//$db = connectToDB();
-//
-//$model = $_POST['model'];
-//
-//$query = $db->prepare('SELECT `model` FROM `cars` WHERE `model` =?;');
-//
-//$query->execute([$model]);
-//
-//$modelDb = $query->fetch();
-//
-//print_r($modelDb);
-//
-//if($modelDb)
-//{
-//    header('Location: storyTwo.php?error=1');
-//} else {
-//    $make = $_POST['make'];
-//    $model= $_POST['model'];
-//    $fuel= $_POST['fuel'];
-//    $gearbox= $_POST['gearbox'];
-//    $year= $_POST['year'];
-//    $query = $db->prepare("INSERT INTO `cars`(`make`, `model`, `fuel`, `gearbox`, `year`) VALUES ('$make', '$model', '$fuel', '$gearbox', '$year')");
-//    $result = $query->execute();
-//    header('Location: carsCollection.php');
-//}
