@@ -2,16 +2,6 @@
 require 'functions.php';
 $db = connectToDB();
 
-$model = $_POST['model'];
-
-$query = $db->prepare('SELECT `model` FROM `cars` WHERE `model` = ?');
-
-$query->execute([$model]);
-
-$modelDb = $query->fetch();
-
-//print_r($modelDb);
-
 $make = $model = $fuel = $gearbox = $year = '';
 
 $errors = ['make'=>'',
@@ -20,6 +10,8 @@ $errors = ['make'=>'',
     'gearbox'=>'',
     'year'=>''
 ];
+
+//This runs only after the submit button has been submitted
 
 if(isset($_POST['submit']))
 {
@@ -33,7 +25,15 @@ if(isset($_POST['submit']))
     if (empty($_POST['model'])) {
         $errors['model'] = 'Please add a model name!';
     } else {
-        if($_POST['model'] === $modelDb['model']) {
+        $model = $_POST['model'];
+
+        $query = $db->prepare('SELECT `model` FROM `cars` WHERE `model` = ?');
+
+        $query->execute([$model]);
+
+        $modelDb = $query->fetchAll();
+
+        if(!empty($modelDb)) {
             $errors['model'] = 'This model is already in the list!';
         } else {
             $model = $_POST['model'];
@@ -65,6 +65,24 @@ if(isset($_POST['submit']))
     {
 //        echo 'There are errors in the form!';
     } else {
+        $make = $_POST['make'];
+        $model= $_POST['model'];
+        $fuel = $_POST['fuel'];
+
+        $query = $db->prepare('SELECT `id` FROM `fuel` WHERE `fuel` = ?');
+
+        $query->execute([$fuel]);
+
+        $fuelDb = $query->fetchAll();
+
+        //make a variabvle to store  the data
+        //put this data into the insert query
+        $gearbox= $_POST['gearbox'];
+        $year= $_POST['year'];
+        $query = $db->prepare('INSERT INTO `cars`(`make`, `model`, `fuel`, `gearbox`, `year`)
+                                     VALUES (?, ?, ?, ?, ?');
+        $result = $query->execute([$make], [$model], [$fuelDb[0]['id']], [$gearbox], [$year] );
+
         header('Location: carsCollection.php');
     }
 }

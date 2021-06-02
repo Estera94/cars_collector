@@ -23,12 +23,11 @@ function displayCars(array $getCars): string
     $display =  '<div class="section">';
     foreach ($getCars as $cars) {
          $display .= '<div class="subSection">'
-                        .'<p>'. 'Make: ' . '<span>'. $cars['make'] .'</span>' . '</p>'
-                        .'<p>'. 'Model: ' . '<span>'. $cars['model'] .'</span>' . '</p>'
-                        .'<p>'. 'Fuel Type: ' . '<span>'. $cars['fuel'] .'</span>' .'</p>'
-                        .'<p>'. 'Gearbox: ' . '<span>'. $cars['gearbox'] .'</span>' . '</p>'
-                        .'<p>'. 'Year: ' . '<span>'. $cars['year'] .'</span>' . '</p>'
-                   . '</div>';
+                        .'<p>Make: <span>'. $cars['make'] .'</span></p>'
+                        .'<p>Model: <span>'. $cars['model'] .'</span></p>'
+                        .'<p>Fuel Type: <span>'. $cars['fuel'] .'</span></p>'
+                        .'<p>Gearbox: <span>'. $cars['gearbox'] .'</span></p>'
+                        .'<p>Year: <span>'. $cars['year'] .'</span></p></div>';
     }
     $display .= '</div>';
 
