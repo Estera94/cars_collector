@@ -30,8 +30,8 @@ function displayCars(array $getCars): string
                         .'<p>'. 'Year: ' . '<span>'. $cars['year'] .'</span>' . '</p>'
                    . '</div>';
     }
-         $display .= '</div>';
+    $display .= '</div>';
 
-         return $display;
+    return $display;
 }
 
