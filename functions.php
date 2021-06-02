@@ -21,7 +21,7 @@ function getCarsDb(): array
 
 function displayCars(array $getCars): string
 {
-    $display =  '<div class="section">';
+    $display = '<div class="section">';
     foreach ($getCars as $cars) {
          $display .= '<div class="subSection">'
                         .'<p>Make: <span>'. $cars['make'] .'</span></p>
