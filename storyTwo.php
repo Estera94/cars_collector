@@ -56,13 +56,22 @@ if(isset($_POST['submit']))
     {
         $errors['year'] = 'Please add a year!';
     } else {
-        $year = $_POST['year'];
+//        var_dump(is_numeric($_POST['year']));
+//        exit;
+        if(!is_numeric($_POST['year'])){
+            $errors['year'] = 'Please add a year as a number!';
+        } else {
+            $year = $_POST['year'];
+        }
     }
 
-    if(!empty($errors['make']) ||!empty($errors['model'] || !empty($errors['fuel']) || !empty($errors['gearbox']) || !empty($errors['year'])))
-    {
-//        echo 'There are errors in the form!';
-    } else {
+    if (
+            empty($errors['make']) &&
+            empty($errors['model']) &&
+            empty($errors['fuel']) &&
+            empty($errors['gearbox']) &&
+            empty($errors['year'])
+        ) {
         $make = $_POST['make'];
 
         $model= $_POST['model'];
@@ -87,7 +96,6 @@ if(isset($_POST['submit']))
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
