@@ -19,7 +19,7 @@ $getCars = getCarsDb();
 <body>
 <section>
     <div class="button">
-        <a class="addmore" href="./index.php">Add more cars</a>
+        <a class="addmore" href="storyTwo.php">Add more cars</a>
     </div>
     <div class="title">
         <p>Your car collection</p>
@@ -30,4 +30,3 @@ $getCars = getCarsDb();
 </section>
 </body>
 </html>
-
