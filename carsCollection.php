@@ -30,4 +30,3 @@ $getCars = getCarsDb();
 </section>
 </body>
 </html>
-
