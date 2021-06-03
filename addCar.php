@@ -33,7 +33,7 @@ if (isset($_POST['submit'])) {
     </div>
 </section>
 <section class="form-section">
-    <form action="storyTwo.php" method="POST">
+    <form action="addCar.php" method="POST">
         <label>Make: </label><br>
         <input type="text" name="make" value="<?php echo htmlspecialchars($_POST['make'] ?? '') ?>"><br>
         <div class="text"><?php echo $errors['make'] ?? ''; ?></div>

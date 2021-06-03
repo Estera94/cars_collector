@@ -41,7 +41,8 @@ function displayCars(array $getCars): string
 
 function validate($postData, $db)
 {
-    $errors = ['make' => '',
+    $errors = [
+        'make' => '',
         'model' => '',
         'fuel' => '',
         'gearbox' => '',
@@ -56,11 +57,8 @@ function validate($postData, $db)
         $errors['model'] = 'Please add a model name!';
     } else {
         $query = $db->prepare('SELECT `model` FROM `cars` WHERE `model` = ?');
-
         $query->execute([$postData['model']]);
-
         $modelDb = $query->fetchAll();
-
         if (!empty($modelDb)) {
             $errors['model'] = 'This model is already in the list!';
         }
