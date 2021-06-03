@@ -42,8 +42,9 @@ form {
 
 label {
     color: #976d39;
-    margin: 20px;
+    margin: 10px;
     font-size: 2.5rem;
+    display: flex;
 }
 
 .text {

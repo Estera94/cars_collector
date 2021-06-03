@@ -7,7 +7,6 @@ if (isset($_POST['submit'])) {
 
     if (insertNewCar($errors, $_POST, $db)) {
         header('Location: carsCollection.php');
-        exit;
     }
 }
 ?>
@@ -34,24 +33,24 @@ if (isset($_POST['submit'])) {
 </section>
 <section class="form-section">
     <form action="addCar.php" method="POST">
-        <label>Make: </label><br>
-        <input type="text" name="make" value="<?php echo htmlspecialchars($_POST['make'] ?? '') ?>"><br>
+        <label>Make: </label>
+        <input type="text" name="make" value="<?php echo htmlspecialchars($_POST['make'] ?? '') ?>">
         <div class="text"><?php echo $errors['make'] ?? ''; ?></div>
-        <label>Model: </label><br>
-        <input type="text" name="model" value="<?php echo htmlspecialchars(($_POST['model'] ?? '')) ?>"><br>
+        <label>Model: </label>
+        <input type="text" name="model" value="<?php echo htmlspecialchars(($_POST['model'] ?? '')) ?>">
         <div class="text"><?php echo $errors['model'] ?? ''; ?></div>
-        <label>Fuel Type: </label><br>
+        <label>Fuel Type: </label>
         <select name="fuel" value="<?php echo htmlspecialchars(($_POST['fuel'] ?? '')) ?>">
             <option></option>
             <option>Diesel</option>
             <option>Petrol</option>
-        </select><br>
+        </select>
         <div class="text"><?php echo $errors['fuel'] ?? ''; ?></div>
-        <label>Gearbox: </label><br>
-        <input type="text" name="gearbox" value="<?php echo htmlspecialchars(($_POST['gearbox'] ?? '')) ?>"><br>
+        <label>Gearbox: </label>
+        <input type="text" name="gearbox" value="<?php echo htmlspecialchars(($_POST['gearbox'] ?? '')) ?>">
         <div class="text"><?php echo $errors['gearbox'] ?? ''; ?></div>
-        <label>Year: </label><br>
-        <input type="text" name="year" value="<?php echo htmlspecialchars(($_POST['year'] ?? '')) ?>"><br>
+        <label>Year: </label>
+        <input type="text" name="year" value="<?php echo htmlspecialchars(($_POST['year'] ?? '')) ?>">
         <div class="text"><?php echo $errors['year'] ?? ''; ?></div>
         <input class="submit" type="submit" name="submit" value="Submit">
     </form>
