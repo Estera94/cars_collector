@@ -1,5 +1,18 @@
 <?php
-require 'validation.php';
+require 'functions.php';
+
+$db = connectToDB();
+
+if(isset($_POST['submit']))
+{
+    $errors = validate($_POST, $db);
+
+    if(insertNewCar($errors, $_POST, $db))
+    {
+        header('Location: carsCollection.php');
+        exit;
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,24 +37,24 @@ require 'validation.php';
 <section class="form-section">
     <form action="storyTwo.php" method="POST">
         <label>Make: </label><br>
-        <input type="text" name="make" value="<?php echo htmlspecialchars($make) ?>"><br>
-        <div class="text"><?php echo $errors['make']; ?></div>
+        <input type="text" name="make" value="<?php echo htmlspecialchars($_POST['make'] ?? '') ?>"><br>
+        <div class="text"><?php echo $errors['make'] ?? ''; ?></div>
         <label>Model: </label><br>
-        <input type="text" name="model" value="<?php echo htmlspecialchars($model) ?>"><br>
-        <div class="text"><?php echo $errors['model']; ?></div>
+        <input type="text" name="model" value="<?php echo htmlspecialchars(($_POST['model'] ?? '')) ?>"><br>
+        <div class="text"><?php echo $errors['model'] ?? ''; ?></div>
         <label>Fuel Type: </label><br>
-        <select name="fuel" value="<?php echo htmlspecialchars($fuel) ?>">
+        <select name="fuel" value="<?php echo htmlspecialchars(($_POST['fuel'] ?? '')) ?>">
             <option></option>
             <option>Diesel</option>
             <option>Petrol</option>
         </select><br>
-        <div class="text"><?php echo $errors['fuel']; ?></div>
+        <div class="text"><?php echo $errors['fuel'] ?? ''; ?></div>
         <label>Gearbox: </label><br>
-        <input type="text" name="gearbox" value="<?php echo htmlspecialchars($gearbox) ?>"><br>
-        <div class="text"><?php echo $errors['gearbox']; ?></div>
+        <input type="text" name="gearbox" value="<?php echo htmlspecialchars(($_POST['gearbox'] ?? '')) ?>"><br>
+        <div class="text"><?php echo $errors['gearbox'] ??''; ?></div>
         <label>Year: </label><br>
-        <input type="text" name="year" value="<?php echo htmlspecialchars($year) ?>"><br>
-        <div class="text"><?php echo $errors['year']; ?></div>
+        <input type="text" name="year" value="<?php echo htmlspecialchars(($_POST['year'] ?? '')) ?>"><br>
+        <div class="text"><?php echo $errors['year'] ?? ''; ?></div>
         <input class="submit" type="submit" name="submit" value="Submit">
     </form>
     <div class="image">
