@@ -1,14 +1,11 @@
 <?php
 require 'functions.php';
 
-$db = connectToDB();
-
-if(isset($_POST['submit']))
-{
+if (isset($_POST['submit'])) {
+    $db = connectToDB();
     $errors = validate($_POST, $db);
 
-    if(insertNewCar($errors, $_POST, $db))
-    {
+    if (insertNewCar($errors, $_POST, $db)) {
         header('Location: carsCollection.php');
         exit;
     }
@@ -24,7 +21,8 @@ if(isset($_POST['submit']))
     <link rel="stylesheet" href=" css/style.css">
     <!-- FONT -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap"
+          rel="stylesheet">
     <!-- PAGE TITLE -->
     <title>Cars Collector</title>
 </head>
@@ -51,7 +49,7 @@ if(isset($_POST['submit']))
         <div class="text"><?php echo $errors['fuel'] ?? ''; ?></div>
         <label>Gearbox: </label><br>
         <input type="text" name="gearbox" value="<?php echo htmlspecialchars(($_POST['gearbox'] ?? '')) ?>"><br>
-        <div class="text"><?php echo $errors['gearbox'] ??''; ?></div>
+        <div class="text"><?php echo $errors['gearbox'] ?? ''; ?></div>
         <label>Year: </label><br>
         <input type="text" name="year" value="<?php echo htmlspecialchars(($_POST['year'] ?? '')) ?>"><br>
         <div class="text"><?php echo $errors['year'] ?? ''; ?></div>
