@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.34)
 # Database: collector
-# Generation Time: 2021-06-01 10:36:28 +0000
+# Generation Time: 2021-07-08 11:54:37 +0000
 # ************************************************************
 
 
@@ -41,13 +41,37 @@ LOCK TABLES `cars` WRITE;
 
 INSERT INTO `cars` (`id`, `make`, `model`, `fuel_type`, `gearbox`, `year`)
 VALUES
-	(1,'Audi','A3','diesel','automatic',2015),
-	(2,'BMW','1 Series','petrol','manual',2011),
-	(3,'Renault','Megane','diesel','manual',2010),
-	(4,'Lamborghini','Aventador','petrol','Automatic',2017),
-	(8,'mazda','1020','Diesel','manual',2018);
+	(1,'Audi','A3','2','automatic',2015),
+	(2,'BMW','1 Series','3','manual',2011),
+	(3,'Renault','Megane','2','manual',2010),
+	(4,'Lamborghini','Aventador','3','Automatic',2017),
+	(8,'mazda','1020','2','manual',2018),
+	(9,'mazda','sdadas','2','manual',222);
 
 /*!40000 ALTER TABLE `cars` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table fuel
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `fuel`;
+
+CREATE TABLE `fuel` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `fuel` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `fuel` WRITE;
+/*!40000 ALTER TABLE `fuel` DISABLE KEYS */;
+
+INSERT INTO `fuel` (`id`, `fuel`)
+VALUES
+	(2,'diesel'),
+	(3,'petrol');
+
+/*!40000 ALTER TABLE `fuel` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
